@@ -3,14 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Restaurant</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>TastyTable | Accueil</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
 </head>
-<body>
-  <header>
-    <h1>Welcome to My Restaurant</h1>
-    <p>Tap below to start your order</p>
-    <button>Start Ordering</button>
+<body class="bg-white text-gray-800">
+
+  <!-- Header with Logo and Tagline -->
+  <header class="bg-gradient-to-r from-orange-500 to-orange-400 p-4 flex items-center justify-between shadow-md">
+    <div class="flex items-center gap-3">
+      <img src="images/logo.png" alt="Logo" class="w-12 h-12 rounded-full shadow-md" />
+      <span class="text-white text-2xl font-bold tracking-wide">TastyTable</span>
+    </div>
+    <p class="hidden sm:block text-white text-sm italic">Fast, Easy & Delicious</p>
   </header>
+
+  <!-- Navigation Bar -->
+  <nav class="bg-orange-50 p-3 text-sm sm:text-base flex justify-around shadow-inner sticky top-0 z-10">
+    <a href="#" class="text-orange-700 font-semibold hover:underline">Accueil</a>
+    <a href="#" class="text-orange-700 font-semibold hover:underline">Menu</a>
+    <a href="#" class="text-orange-700 font-semibold hover:underline">À propos</a>
+    <a href="#" class="text-orange-700 font-semibold hover:underline">Contact</a>
+  </nav>
+
+  <!-- Slideshow / Offers -->
+  <section class="mt-4 px-4">
+    <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+      <img src="images/picture1.png" alt="Offer 1" class="w-full h-48 object-cover" />
+    </div>
+    <div class="rounded-xl overflow-hidden shadow-lg">
+      <img src="images/picture2.png" alt="Offer 2" class="w-full h-48 object-cover" />
+    </div>
+  </section>
+
+  <!-- Service Options -->
+  <section class="my-8 px-4 text-center">
+    <h2 class="text-2xl font-bold mb-6">Choisissez votre mode</h2>
+    <div class="flex flex-col sm:flex-row gap-6 justify-center">
+      <div class="bg-orange-100 hover:bg-orange-200 transition p-5 rounded-xl shadow w-full sm:w-48">Sur Place</div>
+      <div class="bg-orange-100 hover:bg-orange-200 transition p-5 rounded-xl shadow w-full sm:w-48">À Emporter</div>
+      <div class="bg-orange-100 hover:bg-orange-200 transition p-5 rounded-xl shadow w-full sm:w-48">Livraison</div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-orange-500 text-white text-center p-6 rounded-xl mx-4 my-8 shadow-md">
+    <h2 class="text-3xl font-bold mb-3">Commandez Maintenant !</h2>
+    <a href="#" class="inline-block bg-white text-orange-600 font-bold py-3 px-8 rounded-full hover:bg-orange-100 transition">Voir le Menu</a>
+  </section>
+
+  <!-- Featured Dishes -->
+  <section class="px-4 my-10">
+    <h2 class="text-2xl font-bold mb-6 text-center">Plats en Vedette</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="border p-4 rounded-xl shadow-lg">
+        <img src="images/picture3.png" alt="Dish 2" class="w-full h-36 object-cover rounded-md mb-3" />
+        <h3 class="font-semibold text-lg">Burger Gourmet</h3>
+        <p class="text-sm text-gray-600">Savoureux et juteux, servi avec frites croustillantes.</p>
+      </div>
+      <div class="border p-4 rounded-xl shadow-lg">
+        <img src="images/picture4.png" alt="Dish 2" class="w-full h-36 object-cover rounded-md mb-3" />
+        <h3 class="font-semibold text-lg">Pizza Margherita</h3>
+        <p class="text-sm text-gray-600">Simple, fraîche et pleine de goût italien.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Categories -->
+  <section class="px-4 my-10">
+    <h2 class="text-2xl font-bold mb-6 text-center">Catégories Populaires</h2>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <span class="bg-orange-100 px-5 py-2 rounded-full text-orange-700 font-medium hover:bg-orange-200">Burgers</span>
+      <span class="bg-orange-100 px-5 py-2 rounded-full text-orange-700 font-medium hover:bg-orange-200">Pizzas</span>
+      <span class="bg-orange-100 px-5 py-2 rounded-full text-orange-700 font-medium hover:bg-orange-200">Boissons</span>
+      <span class="bg-orange-100 px-5 py-2 rounded-full text-orange-700 font-medium hover:bg-orange-200">Desserts</span>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center p-6">
+    <p>&copy; 2025 TastyTable. Tous droits réservés.</p>
+  </footer>
+
 </body>
 </html>
