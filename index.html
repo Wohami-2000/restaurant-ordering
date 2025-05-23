@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,72 +15,112 @@
     body {
       font-family: "Inter", sans-serif;
     }
+    /* Slideshow arrows */
+    .arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(234, 88, 12, 0.6); /* Tailwind's orange-600 + 60% opacity */
+  color: white;
+  border-radius: 9999px;
+  padding: 0.5rem; /* p-2 = 0.5rem */
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+.arrow-btn:hover {
+  background-color: rgba(234, 88, 12, 0.9); /* hover:bg-opacity-90 */
+}
+
+    .arrow-left {
+      left: 10px;
+    }
+    .arrow-right {
+      right: 10px;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-800">
 
-  <!-- Header with centered Logo and Tagline -->
-  <header class="bg-gradient-to-r from-orange-500 to-orange-400 p-6 text-center shadow-md">
-    <img
-      src="images/logo.png"
-      alt="Logo"
-      class="mx-auto w-20 h-20 rounded-full shadow-md mb-2"
-    />
-    <h1 class="text-white text-3xl font-bold tracking-wide">TastyTable</h1>
-    <p class="text-white italic mt-1 text-lg">Fast, Easy & Delicious</p>
-  </header>
-
   <!-- Navigation Bar -->
-  <nav class="bg-orange-50 p-3 shadow-inner sticky top-0 z-20">
-    <div class="container mx-auto flex items-center justify-between">
-      <!-- Desktop nav -->
-      <ul
-        id="nav-links"
-        class="hidden sm:flex gap-8 text-orange-700 font-semibold text-base"
-      >
-        <li><a href="#" class="hover:underline">Accueil</a></li>
-        <li><a href="#" class="hover:underline">Menu</a></li>
-        <li><a href="#" class="hover:underline">À propos</a></li>
-        <li><a href="#" class="hover:underline">Contact</a></li>
-      </ul>
+  <nav class="bg-gradient-to-r from-orange-500 to-orange-400 p-4 shadow-md sticky top-0 z-30 flex items-center justify-between">
+    <!-- Left: Hamburger menu (mobile only) -->
+    <button
+      id="hamburger"
+      aria-label="Toggle navigation menu"
+      class="sm:hidden flex flex-col gap-1.5 w-6 h-6 justify-center cursor-pointer"
+    >
+      <span class="block h-0.5 bg-white rounded"></span>
+      <span class="block h-0.5 bg-white rounded"></span>
+      <span class="block h-0.5 bg-white rounded"></span>
+    </button>
 
-      <!-- Mobile Hamburger Button -->
-      <button
-        id="hamburger"
-        aria-label="Toggle navigation menu"
-        class="sm:hidden flex flex-col gap-1.5 w-6 h-6 justify-center cursor-pointer"
-      >
-        <span class="block h-0.5 bg-orange-700 rounded"></span>
-        <span class="block h-0.5 bg-orange-700 rounded"></span>
-        <span class="block h-0.5 bg-orange-700 rounded"></span>
-      </button>
+    <!-- Center: Logo and tagline -->
+    <div class="flex flex-col items-center flex-grow">
+      <img
+        src="images/logo.png"
+        alt="Logo"
+        class="w-16 h-16 rounded-full shadow-md mb-1"
+      />
+      <div class="text-white text-lg font-bold leading-tight">TastyTable</div>
+      <div class="text-white italic text-xs -mt-1">Fast, Easy & Delicious</div>
     </div>
 
-    <!-- Mobile nav links (hidden by default) -->
-    <ul
-      id="mobile-nav"
-      class="sm:hidden bg-orange-100 text-orange-700 font-semibold flex flex-col gap-3 mt-2 p-4 rounded shadow-md hidden"
-    >
-      <li><a href="#" class="hover:underline block">Accueil</a></li>
-      <li><a href="#" class="hover:underline block">Menu</a></li>
-      <li><a href="#" class="hover:underline block">À propos</a></li>
-      <li><a href="#" class="hover:underline block">Contact</a></li>
-    </ul>
+    <!-- Right: Cart icon -->
+    <button aria-label="Shopping Cart" class="text-white hover:text-yellow-300 transition relative">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="w-7 h-7"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.6 8m1.6-8L7 13m10 0l1.6 8m-1.6-8H7" />
+      </svg>
+      <!-- Badge example -->
+      <span
+        class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold leading-none text-white bg-red-600 rounded-full"
+        >3</span
+      >
+    </button>
   </nav>
 
+  <!-- Mobile nav links (hidden by default) -->
+  <ul
+    id="mobile-nav"
+    class="sm:hidden bg-orange-100 text-orange-700 font-semibold flex flex-col gap-3 mt-1 p-4 rounded shadow-md hidden"
+  >
+    <li><a href="#" class="hover:underline block">Accueil</a></li>
+    <li><a href="#" class="hover:underline block">Menu</a></li>
+    <li><a href="#" class="hover:underline block">À propos</a></li>
+    <li><a href="#" class="hover:underline block">Contact</a></li>
+  </ul>
+
+  <!-- Spacing between nav and sections -->
+  <div class="my-6"></div>
+
   <!-- Slideshow Section -->
-  <section class="mt-4 px-4 max-w-4xl mx-auto relative overflow-hidden rounded-xl shadow-lg">
-    <div id="slideshow" class="relative w-full h-48 sm:h-64">
+  <section class="px-4 max-w-4xl mx-auto relative rounded-xl shadow-lg overflow-hidden mb-12">
+    <div id="slideshow" class="relative w-full h-48 sm:h-64 rounded-xl overflow-hidden">
       <img
         src="images/picture1.png"
         alt="Offer 1"
-        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100"
+        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100 rounded-xl"
       />
       <img
         src="images/picture2.png"
         alt="Offer 2"
-        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0"
+        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0 rounded-xl"
       />
+      <!-- Arrows -->
+      <div id="prev" class="arrow-btn arrow-left select-none hidden sm:block">
+        &#10094;
+      </div>
+      <div id="next" class="arrow-btn arrow-right select-none hidden sm:block">
+        &#10095;
+      </div>
     </div>
   </section>
 
@@ -180,42 +220,71 @@
   <section class="px-4 my-10 max-w-4xl mx-auto text-center">
     <h2 class="text-2xl font-bold mb-6">Notre Localisation</h2>
     <div class="w-full h-64 rounded-lg overflow-hidden shadow-lg mb-4">
-      <!-- Google Maps iframe placeholder (replace with your real address) -->
+      <!-- Google Maps iframe example: replace the src below with your real map embed -->
       <iframe
         class="w-full h-full border-0"
-        src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=Your+Restaurant+Address"
-        allowfullscreen
         loading="lazy"
+        allowfullscreen
         referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=Your+Restaurant+Address"
       ></iframe>
     </div>
-    <p class="text-gray-700 font-semibold">123 Rue Exemple, Casablanca, Maroc</p>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white text-center p-6">
-    <p>&copy; 2025 TastyTable. Tous droits réservés.</p>
+  <footer
+    class="bg-orange-600 text-white text-center p-6 mt-12 shadow-inner"
+  >
+    &copy; 2025 TastyTable. Tous droits réservés.
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    // Hamburger menu toggle
-    const hamburger = document.getElementById("hamburger");
-    const mobileNav = document.getElementById("mobile-nav");
-    hamburger.addEventListener("click", () => {
-      mobileNav.classList.toggle("hidden");
-    });
+<script>
+  // Mobile nav toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
 
-    // Slideshow logic
-    const slides = document.querySelectorAll("#slideshow img");
-    let currentIndex = 0;
-    setInterval(() => {
-      slides[currentIndex].classList.remove("opacity-100");
-      slides[currentIndex].classList.add("opacity-0");
-      currentIndex = (currentIndex + 1) % slides.length;
-      slides[currentIndex].classList.remove("opacity-0");
-      slides[currentIndex].classList.add("opacity-100");
-    }, 3000);
-  </script>
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden');
+  });
+
+  // Slideshow logic
+  const slides = document.querySelectorAll('#slideshow img');
+  let current = 0;
+  const total = slides.length;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.opacity = i === index ? '1' : '0';
+    });
+  }
+
+  function nextSlide() {
+    current = (current + 1) % total;
+    showSlide(current);
+  }
+
+  function prevSlide() {
+    current = (current - 1 + total) % total;
+    showSlide(current);
+  }
+
+  document.getElementById('next').addEventListener('click', () => {
+    nextSlide();
+    resetTimer();
+  });
+  document.getElementById('prev').addEventListener('click', () => {
+    prevSlide();
+    resetTimer();
+  });
+
+  showSlide(current);
+  let slideInterval = setInterval(nextSlide, 3000);
+
+  function resetTimer() {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, 3000);
+  }
+</script>
+
 </body>
 </html>
