@@ -2,89 +2,194 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TastyTable | Accueil</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: "Inter", sans-serif;
     }
   </style>
 </head>
 <body class="bg-white text-gray-800">
 
-  <!-- Header with Logo and Tagline -->
-  <header class="bg-gradient-to-r from-orange-500 to-orange-400 p-4 flex items-center justify-between shadow-md">
-    <div class="flex items-center gap-3">
-      <img src="images/logo.png" alt="Logo" class="w-12 h-12 rounded-full shadow-md" />
-      <span class="text-white text-2xl font-bold tracking-wide">TastyTable</span>
-    </div>
-    <p class="hidden sm:block text-white text-sm italic">Fast, Easy & Delicious</p>
+  <!-- Header with centered Logo and Tagline -->
+  <header class="bg-gradient-to-r from-orange-500 to-orange-400 p-6 text-center shadow-md">
+    <img
+      src="images/logo.png"
+      alt="Logo"
+      class="mx-auto w-20 h-20 rounded-full shadow-md mb-2"
+    />
+    <h1 class="text-white text-3xl font-bold tracking-wide">TastyTable</h1>
+    <p class="text-white italic mt-1 text-lg">Fast, Easy & Delicious</p>
   </header>
 
   <!-- Navigation Bar -->
-  <nav class="bg-orange-50 p-3 text-sm sm:text-base flex justify-around shadow-inner sticky top-0 z-10">
-    <a href="#" class="text-orange-700 font-semibold hover:underline">Accueil</a>
-    <a href="#" class="text-orange-700 font-semibold hover:underline">Menu</a>
-    <a href="#" class="text-orange-700 font-semibold hover:underline">À propos</a>
-    <a href="#" class="text-orange-700 font-semibold hover:underline">Contact</a>
+  <nav class="bg-orange-50 p-3 shadow-inner sticky top-0 z-20">
+    <div class="container mx-auto flex items-center justify-between">
+      <!-- Desktop nav -->
+      <ul
+        id="nav-links"
+        class="hidden sm:flex gap-8 text-orange-700 font-semibold text-base"
+      >
+        <li><a href="#" class="hover:underline">Accueil</a></li>
+        <li><a href="#" class="hover:underline">Menu</a></li>
+        <li><a href="#" class="hover:underline">À propos</a></li>
+        <li><a href="#" class="hover:underline">Contact</a></li>
+      </ul>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        id="hamburger"
+        aria-label="Toggle navigation menu"
+        class="sm:hidden flex flex-col gap-1.5 w-6 h-6 justify-center cursor-pointer"
+      >
+        <span class="block h-0.5 bg-orange-700 rounded"></span>
+        <span class="block h-0.5 bg-orange-700 rounded"></span>
+        <span class="block h-0.5 bg-orange-700 rounded"></span>
+      </button>
+    </div>
+
+    <!-- Mobile nav links (hidden by default) -->
+    <ul
+      id="mobile-nav"
+      class="sm:hidden bg-orange-100 text-orange-700 font-semibold flex flex-col gap-3 mt-2 p-4 rounded shadow-md hidden"
+    >
+      <li><a href="#" class="hover:underline block">Accueil</a></li>
+      <li><a href="#" class="hover:underline block">Menu</a></li>
+      <li><a href="#" class="hover:underline block">À propos</a></li>
+      <li><a href="#" class="hover:underline block">Contact</a></li>
+    </ul>
   </nav>
 
-  <!-- Slideshow / Offers -->
-  <section class="mt-4 px-4">
-    <div class="rounded-xl overflow-hidden shadow-lg mb-4">
-      <img src="images/picture1.png" alt="Offer 1" class="w-full h-48 object-cover" />
-    </div>
-    <div class="rounded-xl overflow-hidden shadow-lg">
-      <img src="images/picture2.png" alt="Offer 2" class="w-full h-48 object-cover" />
+  <!-- Slideshow Section -->
+  <section class="mt-4 px-4 max-w-4xl mx-auto relative overflow-hidden rounded-xl shadow-lg">
+    <div id="slideshow" class="relative w-full h-48 sm:h-64">
+      <img
+        src="images/picture1.png"
+        alt="Offer 1"
+        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100"
+      />
+      <img
+        src="images/picture2.png"
+        alt="Offer 2"
+        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0"
+      />
     </div>
   </section>
 
-  <!-- Service Options -->
-  <section class="my-8 px-4 text-center">
+  <!-- Service Options (Bubbles) -->
+  <section class="my-8 px-4 text-center max-w-4xl mx-auto">
     <h2 class="text-2xl font-bold mb-6">Choisissez votre mode</h2>
-    <div class="flex flex-col sm:flex-row gap-6 justify-center">
-      <div class="bg-orange-100 hover:bg-orange-200 transition p-5 rounded-xl shadow w-full sm:w-48">Sur Place</div>
-      <div class="bg-orange-100 hover:bg-orange-200 transition p-5 rounded-xl shadow w-full sm:w-48">À Emporter</div>
-      <div class="bg-orange-100 hover:bg-orange-200 transition p-5 rounded-xl shadow w-full sm:w-48">Livraison</div>
+    <div class="flex flex-col sm:flex-row gap-8 justify-center">
+      <div
+        class="bg-orange-100 hover:bg-orange-200 cursor-pointer rounded-full px-8 py-5 shadow-lg text-orange-700 font-semibold text-lg select-none transition"
+      >
+        Sur Place
+      </div>
+      <div
+        class="bg-orange-100 hover:bg-orange-200 cursor-pointer rounded-full px-8 py-5 shadow-lg text-orange-700 font-semibold text-lg select-none transition"
+      >
+        À Emporter
+      </div>
+      <div
+        class="bg-orange-100 hover:bg-orange-200 cursor-pointer rounded-full px-8 py-5 shadow-lg text-orange-700 font-semibold text-lg select-none transition"
+      >
+        Livraison
+      </div>
     </div>
   </section>
 
   <!-- Call to Action -->
-  <section class="bg-orange-500 text-white text-center p-6 rounded-xl mx-4 my-8 shadow-md">
+  <section
+    class="bg-orange-500 text-white text-center p-6 rounded-xl mx-4 my-8 shadow-md max-w-4xl mx-auto"
+  >
     <h2 class="text-3xl font-bold mb-3">Commandez Maintenant !</h2>
-    <a href="#" class="inline-block bg-white text-orange-600 font-bold py-3 px-8 rounded-full hover:bg-orange-100 transition">Voir le Menu</a>
+    <a
+      href="#"
+      class="inline-block bg-white text-orange-600 font-bold py-3 px-8 rounded-full hover:bg-orange-100 transition"
+      >Voir le Menu</a
+    >
   </section>
 
   <!-- Featured Dishes -->
-  <section class="px-4 my-10">
+  <section class="px-4 my-10 max-w-4xl mx-auto">
     <h2 class="text-2xl font-bold mb-6 text-center">Plats en Vedette</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <div class="border p-4 rounded-xl shadow-lg">
-        <img src="images/picture3.png" alt="Dish 2" class="w-full h-36 object-cover rounded-md mb-3" />
+      <div
+        class="border p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+      >
+        <img
+          src="images/picture3.png"
+          alt="Burger Gourmet"
+          class="w-full h-36 object-cover rounded-md mb-3"
+        />
         <h3 class="font-semibold text-lg">Burger Gourmet</h3>
-        <p class="text-sm text-gray-600">Savoureux et juteux, servi avec frites croustillantes.</p>
+        <p class="text-sm text-gray-600">
+          Savoureux et juteux, servi avec frites croustillantes.
+        </p>
       </div>
-      <div class="border p-4 rounded-xl shadow-lg">
-        <img src="images/picture4.png" alt="Dish 2" class="w-full h-36 object-cover rounded-md mb-3" />
+      <div
+        class="border p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+      >
+        <img
+          src="images/picture4.png"
+          alt="Pizza Margherita"
+          class="w-full h-36 object-cover rounded-md mb-3"
+        />
         <h3 class="font-semibold text-lg">Pizza Margherita</h3>
-        <p class="text-sm text-gray-600">Simple, fraîche et pleine de goût italien.</p>
+        <p class="text-sm text-gray-600">
+          Simple, fraîche et pleine de goût italien.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- Popular Categories -->
-  <section class="px-4 my-10">
+  <section class="px-4 my-10 max-w-4xl mx-auto">
     <h2 class="text-2xl font-bold mb-6 text-center">Catégories Populaires</h2>
-    <div class="flex flex-wrap gap-4 justify-center">
-      <span class="bg-orange-100 px-5 py-2 rounded-full text-orange-700 font-medium hover:bg-orange-200">Burgers</span>
-      <span class="bg-orange-100 px-5 py-2 rounded-full text-orange-700 font-medium hover:bg-orange-200">Pizzas</span>
-      <span class="bg-orange-100 px-5 py-2 rounded-full text-orange-700 font-medium hover:bg-orange-200">Boissons</span>
-      <span class="bg-orange-100 px-5 py-2 rounded-full text-orange-700 font-medium hover:bg-orange-200">Desserts</span>
+    <div
+      class="flex flex-wrap gap-4 justify-center text-orange-700 font-medium"
+    >
+      <span
+        class="bg-orange-100 px-5 py-2 rounded-full hover:bg-orange-200 cursor-pointer transition"
+        >Burgers</span
+      >
+      <span
+        class="bg-orange-100 px-5 py-2 rounded-full hover:bg-orange-200 cursor-pointer transition"
+        >Pizzas</span
+      >
+      <span
+        class="bg-orange-100 px-5 py-2 rounded-full hover:bg-orange-200 cursor-pointer transition"
+        >Boissons</span
+      >
+      <span
+        class="bg-orange-100 px-5 py-2 rounded-full hover:bg-orange-200 cursor-pointer transition"
+        >Desserts</span
+      >
     </div>
+  </section>
+
+  <!-- Restaurant Localisation Section -->
+  <section class="px-4 my-10 max-w-4xl mx-auto text-center">
+    <h2 class="text-2xl font-bold mb-6">Notre Localisation</h2>
+    <div class="w-full h-64 rounded-lg overflow-hidden shadow-lg mb-4">
+      <!-- Google Maps iframe placeholder (replace with your real address) -->
+      <iframe
+        class="w-full h-full border-0"
+        src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=Your+Restaurant+Address"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+    <p class="text-gray-700 font-semibold">123 Rue Exemple, Casablanca, Maroc</p>
   </section>
 
   <!-- Footer -->
@@ -92,5 +197,25 @@
     <p>&copy; 2025 TastyTable. Tous droits réservés.</p>
   </footer>
 
+  <!-- Scripts -->
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById("hamburger");
+    const mobileNav = document.getElementById("mobile-nav");
+    hamburger.addEventListener("click", () => {
+      mobileNav.classList.toggle("hidden");
+    });
+
+    // Slideshow logic
+    const slides = document.querySelectorAll("#slideshow img");
+    let currentIndex = 0;
+    setInterval(() => {
+      slides[currentIndex].classList.remove("opacity-100");
+      slides[currentIndex].classList.add("opacity-0");
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].classList.remove("opacity-0");
+      slides[currentIndex].classList.add("opacity-100");
+    }, 3000);
+  </script>
 </body>
 </html>
